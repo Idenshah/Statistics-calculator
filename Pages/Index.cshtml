@@ -1,0 +1,96 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Statistics</h1>
+    <p>Enter two or more numerical numbers and click calculate button to get their statistics</p>
+    <form method="post">
+        <div class="numberContainer">
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <label for="numberOne" class="col-form-label">Number 1:</label>
+                </div>
+                <div class="col-sm-10" style="display: flex; align-items: center;">
+                    <input type="text" id="numberOne" name="NumberOne" asp-for="NumberOne" />
+                    <div class="text-danger p-2">
+                        @ViewData["MessageForNumberOne"]
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <label for="numberTwo" class="col-form-label">Number 2:</label>
+                </div>
+                <div class="col-sm-10" style="display: flex; align-items: center;">
+                    <input type="text" id="numberTwo" name="NumberTwo" asp-for="NumberTwo" />
+                    <div class="text-danger p-2">
+                        @ViewData["MessageForNumberTwo"]
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <label for="numberThree" class="col-form-label">Number 3:</label>
+                </div>
+                <div class="col-sm-10" style="display: flex; align-items: center;">
+                    <input type="text" id="numberThree" name="NumberThree" asp-for="NumberThree" />
+                    <div class="text-danger p-2">
+                        @ViewData["MessageForNumberThree"]
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <label for="numberFour" class="col-form-label">Number 4:</label>
+                </div>
+                <div class="col-sm-10" style="display: flex; align-items: center;">
+                    <input type="text" id="numberFour" name="NumberFour" asp-for="NumberFour" />
+                    <div class="text-danger p-2">
+                        @ViewData["MessageForNumberFour"]
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary ">Calculate</button>
+            </div>
+            <div class="fw-bolder fs-5 mb-3">
+                <p class="GeneralError text-danger p-2">
+                    @ViewData["MessageForGeneral"]
+                </p>
+            </div>
+            <div class="CalculationContainer" id="statistic" style="display:@ViewData["StatisticStyleDisplay"];">
+                <div class="fw-bolder fs-5 mb-3">Statistic of the selected numbers</div>
+                <div class="row mb-3">
+                    <div class="col-sm-2">
+                        <label for="outPut1" class="col-form-label" id="maximum">Maximum:</label>
+                        <output type="text" class="g-col-1 fw-bold" id="max" name="Maximum">@Model.Maximum</output>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-2">
+                        <label for="outPut2" class="col-form-label" id="minimum">Minimum:</label>
+                        <output type="text" class="g-col-1 fw-bold" id="min" name="Minimum">@Model.Minimum</output>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-2">
+                        <label for="outPut3" class="col-form-label" id="average">Average:</label>
+                        <output type="text" class="g-col-1 fw-bold" id="average" name="Average">@ViewData["FormattedAverage"]</output>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-2">
+                        <label for="outPut4" class="col-form-label" id="total">Total:</label>
+                        <output type="text" class="g-col-1 fw-bold" id="total" name="Total">@ViewData["FormattedTotal"]</output>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
